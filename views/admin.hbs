@@ -1,7 +1,12 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <form action="/pushNotification" method="post">
-    <input type="text" name="text" placeholder="Send to all clients" />
+    <input type="text" name="text" placeholder="Send push notifications to all clients" />
+    <button type="submit" value="Send">Send</button>
+</form>
+
+<form action="/pushNotificationToAUser" method="post">
+    <input type="text" name="text" placeholder="Send a push notification to a client" />
     <button type="submit" value="Send">Send</button>
 </form>
 <script>

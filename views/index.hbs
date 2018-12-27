@@ -2,7 +2,8 @@
 <p>Welcome to {{title}}</p>
 <script src="javascripts/eventsource.js"></script>
 <script>
-    const evtSource = new EventSource('/events');
+    const id = Date.now();
+    const evtSource = new EventSource(`/events?id="${id}"`);
 
     evtSource.addEventListener('message', function (evt) {
         console.log("message", evt)

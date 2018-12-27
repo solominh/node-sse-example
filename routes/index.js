@@ -7,7 +7,7 @@ router.get("/", function(req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-const connections = [];
+const connections = {};
 
 const sendSimpleMessage = res => {
   res.write("data: Heartbeat\n\n");
@@ -31,7 +31,9 @@ const sendPushMessage = res => {
 };
 
 router.get("/events", cors(), (req, res) => {
-  connections.push(res);
+  const id = req.query.id;
+  connections[id] = { res};
+  console.log(req.query.id)
 
   res.writeHead(200, {
     "Content-Type": "text/event-stream",
@@ -47,9 +49,17 @@ router.get("/events", cors(), (req, res) => {
 });
 
 router.post("/pushNotification", function(req, res, next) {
-  connections.forEach(res => {
-    sendPushMessage(res);
+  Object.values(connections).forEach(connection => {
+    sendPushMessage(connection.res);
   });
+
+  res.end();
+});
+
+router.post("/pushNotificationToAUser", function(req, res, next) {
+  const connection = Object.values(connections)[0];
+  sendPushMessage(connection.res);
+
   res.end();
 });
 
