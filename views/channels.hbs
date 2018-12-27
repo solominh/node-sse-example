@@ -1,0 +1,19 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<script src="javascripts/eventsource.js"></script>
+<script>
+    const id = Date.now();
+    const evtSource = new EventSource(`/channels/push?id="${id}"`);
+
+    evtSource.addEventListener('message', function (evt) {
+        console.log("message", evt)
+    })
+
+    evtSource.addEventListener('event', function (evt) {
+        console.log("event", evt)
+    }, false);
+
+    evtSource.addEventListener('pushNotification', function (evt) {
+        console.log("pushNotification", evt)
+    })
+</script>

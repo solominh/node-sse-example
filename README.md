@@ -43,7 +43,8 @@
     connections[id] = { res};
     ```
 
-## Reference
+## `https://github.com/rexxars/sse-channel`
 
-- `https://github.com/rexxars/sse-channel`
-  - Use this library to handle some events such as: `error`, `connect`, `disconnect`, `retry`
+Use this library to handle some events such as: `error`, `connect`, `disconnect`, `retry`
+
+- `routes/channels.hbs` and `views/channels.hbs`
