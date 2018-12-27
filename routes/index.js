@@ -42,10 +42,10 @@ router.get("/events", cors(), (req, res) => {
     Connection: "keep-alive"
   });
 
-  // setInterval(() => {
-  //   sendSimpleMessage(res);
-  //   sendEvent(res);
-  // }, 3000);
+  setInterval(() => {
+    sendSimpleMessage(res);
+    sendEvent(res);
+  }, 3000);
 });
 
 router.post("/pushNotification", function(req, res, next) {

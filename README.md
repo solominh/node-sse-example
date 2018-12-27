@@ -4,6 +4,8 @@
 
 - `yarn install`
 - `yarn start`
+- Goto: `http://localhost:3000/` and open `devTools` to view logs
+- Goto `http://localhost:3000/admin` to send push notification to clients
 
 ## Main files
 
